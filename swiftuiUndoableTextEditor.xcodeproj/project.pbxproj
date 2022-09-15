@@ -1,0 +1,617 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FF4C30F128D331D6002D92BA /* swiftuiUndoableTextEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C30F028D331D6002D92BA /* swiftuiUndoableTextEditorApp.swift */; };
+		FF4C30F328D331D6002D92BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C30F228D331D6002D92BA /* ContentView.swift */; };
+		FF4C30F528D331D8002D92BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4C30F428D331D8002D92BA /* Assets.xcassets */; };
+		FF4C30F928D331D8002D92BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4C30F828D331D8002D92BA /* Preview Assets.xcassets */; };
+		FF4C310328D331D8002D92BA /* swiftuiUndoableTextEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C310228D331D8002D92BA /* swiftuiUndoableTextEditorTests.swift */; };
+		FF4C310D28D331D8002D92BA /* swiftuiUndoableTextEditorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C310C28D331D8002D92BA /* swiftuiUndoableTextEditorUITests.swift */; };
+		FF4C310F28D331D8002D92BA /* swiftuiUndoableTextEditorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C310E28D331D8002D92BA /* swiftuiUndoableTextEditorUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FF4C30FF28D331D8002D92BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4C30E528D331D6002D92BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF4C30EC28D331D6002D92BA;
+			remoteInfo = swiftuiUndoableTextEditor;
+		};
+		FF4C310928D331D8002D92BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4C30E528D331D6002D92BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF4C30EC28D331D6002D92BA;
+			remoteInfo = swiftuiUndoableTextEditor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FF4C30ED28D331D6002D92BA /* swiftuiUndoableTextEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftuiUndoableTextEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF4C30F028D331D6002D92BA /* swiftuiUndoableTextEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftuiUndoableTextEditorApp.swift; sourceTree = "<group>"; };
+		FF4C30F228D331D6002D92BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FF4C30F428D331D8002D92BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF4C30F628D331D8002D92BA /* swiftuiUndoableTextEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = swiftuiUndoableTextEditor.entitlements; sourceTree = "<group>"; };
+		FF4C30F828D331D8002D92BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FF4C30FE28D331D8002D92BA /* swiftuiUndoableTextEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftuiUndoableTextEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF4C310228D331D8002D92BA /* swiftuiUndoableTextEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftuiUndoableTextEditorTests.swift; sourceTree = "<group>"; };
+		FF4C310828D331D8002D92BA /* swiftuiUndoableTextEditorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftuiUndoableTextEditorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF4C310C28D331D8002D92BA /* swiftuiUndoableTextEditorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftuiUndoableTextEditorUITests.swift; sourceTree = "<group>"; };
+		FF4C310E28D331D8002D92BA /* swiftuiUndoableTextEditorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftuiUndoableTextEditorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF4C30EA28D331D6002D92BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF4C30FB28D331D8002D92BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF4C310528D331D8002D92BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FF4C30E428D331D6002D92BA = {
+			isa = PBXGroup;
+			children = (
+				FF4C30EF28D331D6002D92BA /* swiftuiUndoableTextEditor */,
+				FF4C310128D331D8002D92BA /* swiftuiUndoableTextEditorTests */,
+				FF4C310B28D331D8002D92BA /* swiftuiUndoableTextEditorUITests */,
+				FF4C30EE28D331D6002D92BA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FF4C30EE28D331D6002D92BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF4C30ED28D331D6002D92BA /* swiftuiUndoableTextEditor.app */,
+				FF4C30FE28D331D8002D92BA /* swiftuiUndoableTextEditorTests.xctest */,
+				FF4C310828D331D8002D92BA /* swiftuiUndoableTextEditorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF4C30EF28D331D6002D92BA /* swiftuiUndoableTextEditor */ = {
+			isa = PBXGroup;
+			children = (
+				FF4C30F028D331D6002D92BA /* swiftuiUndoableTextEditorApp.swift */,
+				FF4C30F228D331D6002D92BA /* ContentView.swift */,
+				FF4C30F428D331D8002D92BA /* Assets.xcassets */,
+				FF4C30F628D331D8002D92BA /* swiftuiUndoableTextEditor.entitlements */,
+				FF4C30F728D331D8002D92BA /* Preview Content */,
+			);
+			path = swiftuiUndoableTextEditor;
+			sourceTree = "<group>";
+		};
+		FF4C30F728D331D8002D92BA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FF4C30F828D331D8002D92BA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FF4C310128D331D8002D92BA /* swiftuiUndoableTextEditorTests */ = {
+			isa = PBXGroup;
+			children = (
+				FF4C310228D331D8002D92BA /* swiftuiUndoableTextEditorTests.swift */,
+			);
+			path = swiftuiUndoableTextEditorTests;
+			sourceTree = "<group>";
+		};
+		FF4C310B28D331D8002D92BA /* swiftuiUndoableTextEditorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FF4C310C28D331D8002D92BA /* swiftuiUndoableTextEditorUITests.swift */,
+				FF4C310E28D331D8002D92BA /* swiftuiUndoableTextEditorUITestsLaunchTests.swift */,
+			);
+			path = swiftuiUndoableTextEditorUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FF4C30EC28D331D6002D92BA /* swiftuiUndoableTextEditor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF4C311228D331D8002D92BA /* Build configuration list for PBXNativeTarget "swiftuiUndoableTextEditor" */;
+			buildPhases = (
+				FF4C30E928D331D6002D92BA /* Sources */,
+				FF4C30EA28D331D6002D92BA /* Frameworks */,
+				FF4C30EB28D331D6002D92BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = swiftuiUndoableTextEditor;
+			productName = swiftuiUndoableTextEditor;
+			productReference = FF4C30ED28D331D6002D92BA /* swiftuiUndoableTextEditor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FF4C30FD28D331D8002D92BA /* swiftuiUndoableTextEditorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF4C311528D331D8002D92BA /* Build configuration list for PBXNativeTarget "swiftuiUndoableTextEditorTests" */;
+			buildPhases = (
+				FF4C30FA28D331D8002D92BA /* Sources */,
+				FF4C30FB28D331D8002D92BA /* Frameworks */,
+				FF4C30FC28D331D8002D92BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF4C310028D331D8002D92BA /* PBXTargetDependency */,
+			);
+			name = swiftuiUndoableTextEditorTests;
+			productName = swiftuiUndoableTextEditorTests;
+			productReference = FF4C30FE28D331D8002D92BA /* swiftuiUndoableTextEditorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FF4C310728D331D8002D92BA /* swiftuiUndoableTextEditorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF4C311828D331D8002D92BA /* Build configuration list for PBXNativeTarget "swiftuiUndoableTextEditorUITests" */;
+			buildPhases = (
+				FF4C310428D331D8002D92BA /* Sources */,
+				FF4C310528D331D8002D92BA /* Frameworks */,
+				FF4C310628D331D8002D92BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF4C310A28D331D8002D92BA /* PBXTargetDependency */,
+			);
+			name = swiftuiUndoableTextEditorUITests;
+			productName = swiftuiUndoableTextEditorUITests;
+			productReference = FF4C310828D331D8002D92BA /* swiftuiUndoableTextEditorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FF4C30E528D331D6002D92BA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					FF4C30EC28D331D6002D92BA = {
+						CreatedOnToolsVersion = 14.0;
+					};
+					FF4C30FD28D331D8002D92BA = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = FF4C30EC28D331D6002D92BA;
+					};
+					FF4C310728D331D8002D92BA = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = FF4C30EC28D331D6002D92BA;
+					};
+				};
+			};
+			buildConfigurationList = FF4C30E828D331D6002D92BA /* Build configuration list for PBXProject "swiftuiUndoableTextEditor" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FF4C30E428D331D6002D92BA;
+			productRefGroup = FF4C30EE28D331D6002D92BA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FF4C30EC28D331D6002D92BA /* swiftuiUndoableTextEditor */,
+				FF4C30FD28D331D8002D92BA /* swiftuiUndoableTextEditorTests */,
+				FF4C310728D331D8002D92BA /* swiftuiUndoableTextEditorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FF4C30EB28D331D6002D92BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF4C30F928D331D8002D92BA /* Preview Assets.xcassets in Resources */,
+				FF4C30F528D331D8002D92BA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF4C30FC28D331D8002D92BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF4C310628D331D8002D92BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF4C30E928D331D6002D92BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF4C30F328D331D6002D92BA /* ContentView.swift in Sources */,
+				FF4C30F128D331D6002D92BA /* swiftuiUndoableTextEditorApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF4C30FA28D331D8002D92BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF4C310328D331D8002D92BA /* swiftuiUndoableTextEditorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF4C310428D331D8002D92BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF4C310F28D331D8002D92BA /* swiftuiUndoableTextEditorUITestsLaunchTests.swift in Sources */,
+				FF4C310D28D331D8002D92BA /* swiftuiUndoableTextEditorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FF4C310028D331D8002D92BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF4C30EC28D331D6002D92BA /* swiftuiUndoableTextEditor */;
+			targetProxy = FF4C30FF28D331D8002D92BA /* PBXContainerItemProxy */;
+		};
+		FF4C310A28D331D8002D92BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF4C30EC28D331D6002D92BA /* swiftuiUndoableTextEditor */;
+			targetProxy = FF4C310928D331D8002D92BA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		FF4C311028D331D8002D92BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FF4C311128D331D8002D92BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		FF4C311328D331D8002D92BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = swiftuiUndoableTextEditor/swiftuiUndoableTextEditor.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"swiftuiUndoableTextEditor/Preview Content\"";
+				DEVELOPMENT_TEAM = 5NZZ2G4JD4;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = self.swiftuiUndoableTextEditor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FF4C311428D331D8002D92BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = swiftuiUndoableTextEditor/swiftuiUndoableTextEditor.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"swiftuiUndoableTextEditor/Preview Content\"";
+				DEVELOPMENT_TEAM = 5NZZ2G4JD4;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = self.swiftuiUndoableTextEditor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FF4C311628D331D8002D92BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5NZZ2G4JD4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = self.swiftuiUndoableTextEditorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swiftuiUndoableTextEditor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/swiftuiUndoableTextEditor";
+			};
+			name = Debug;
+		};
+		FF4C311728D331D8002D92BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5NZZ2G4JD4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = self.swiftuiUndoableTextEditorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swiftuiUndoableTextEditor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/swiftuiUndoableTextEditor";
+			};
+			name = Release;
+		};
+		FF4C311928D331D8002D92BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5NZZ2G4JD4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = self.swiftuiUndoableTextEditorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = swiftuiUndoableTextEditor;
+			};
+			name = Debug;
+		};
+		FF4C311A28D331D8002D92BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5NZZ2G4JD4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = self.swiftuiUndoableTextEditorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = swiftuiUndoableTextEditor;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FF4C30E828D331D6002D92BA /* Build configuration list for PBXProject "swiftuiUndoableTextEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF4C311028D331D8002D92BA /* Debug */,
+				FF4C311128D331D8002D92BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF4C311228D331D8002D92BA /* Build configuration list for PBXNativeTarget "swiftuiUndoableTextEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF4C311328D331D8002D92BA /* Debug */,
+				FF4C311428D331D8002D92BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF4C311528D331D8002D92BA /* Build configuration list for PBXNativeTarget "swiftuiUndoableTextEditorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF4C311628D331D8002D92BA /* Debug */,
+				FF4C311728D331D8002D92BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF4C311828D331D8002D92BA /* Build configuration list for PBXNativeTarget "swiftuiUndoableTextEditorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF4C311928D331D8002D92BA /* Debug */,
+				FF4C311A28D331D8002D92BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FF4C30E528D331D6002D92BA /* Project object */;
+}

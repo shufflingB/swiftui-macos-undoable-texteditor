@@ -8,12 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		FF4C30F128D331D6002D92BA /* swiftuiUndoableTextEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C30F028D331D6002D92BA /* swiftuiUndoableTextEditorApp.swift */; };
-		FF4C30F328D331D6002D92BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C30F228D331D6002D92BA /* ContentView.swift */; };
 		FF4C30F528D331D8002D92BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4C30F428D331D8002D92BA /* Assets.xcassets */; };
 		FF4C30F928D331D8002D92BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4C30F828D331D8002D92BA /* Preview Assets.xcassets */; };
-		FF4C310328D331D8002D92BA /* swiftuiUndoableTextEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C310228D331D8002D92BA /* swiftuiUndoableTextEditorTests.swift */; };
-		FF4C310D28D331D8002D92BA /* swiftuiUndoableTextEditorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C310C28D331D8002D92BA /* swiftuiUndoableTextEditorUITests.swift */; };
-		FF4C310F28D331D8002D92BA /* swiftuiUndoableTextEditorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C310E28D331D8002D92BA /* swiftuiUndoableTextEditorUITestsLaunchTests.swift */; };
+		FF54048228D8A0A900250B55 /* UndoableString_ExternalUndoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54048128D8A0A900250B55 /* UndoableString_ExternalUndoManager.swift */; };
+		FF77F69F28D4AE6D00ED6266 /* Main_SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77F69628D4AE6D00ED6266 /* Main_SideBar.swift */; };
+		FF77F6A028D4AE6D00ED6266 /* Main_Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77F69728D4AE6D00ED6266 /* Main_Detail.swift */; };
+		FF77F6A428D4AE6D00ED6266 /* Main_DetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77F69C28D4AE6D00ED6266 /* Main_DetailItem.swift */; };
+		FF77F6A528D4AE6D00ED6266 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77F69D28D4AE6D00ED6266 /* Main.swift */; };
+		FF77F6A628D4AE6D00ED6266 /* Main_DetailItemNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77F69E28D4AE6D00ED6266 /* Main_DetailItemNote.swift */; };
+		FF77F6A728D4AEC600ED6266 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77F69128D4AE3D00ED6266 /* Item.swift */; };
+		FF77F6A828D4AECD00ED6266 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77F69228D4AE3D00ED6266 /* AppModel.swift */; };
+		FF77F6A928D4AECD00ED6266 /* UndoableString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77F69328D4AE3D00ED6266 /* UndoableString.swift */; };
+		FF77F6AA28D4AECD00ED6266 /* FocusedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77F69428D4AE3D00ED6266 /* FocusedValues.swift */; };
+		FF77F6AC28D4C27400ED6266 /* UndoableTextEditorUITests_SingleWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77F6AB28D4C27300ED6266 /* UndoableTextEditorUITests_SingleWindow.swift */; };
+		FF77F6AE28D4C28A00ED6266 /* UndoableTextEditorUITests_TwoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77F6AD28D4C28900ED6266 /* UndoableTextEditorUITests_TwoWindow.swift */; };
+		FF77F6B028D4C29200ED6266 /* XCUIApplication_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77F6AF28D4C29200ED6266 /* XCUIApplication_App.swift */; };
+		FF77F6B228D4C3AD00ED6266 /* UndoableStringUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77F6B128D4C3AD00ED6266 /* UndoableStringUnitTests.swift */; };
+		FF77F6B428D4C46900ED6266 /* UndoableStringWithExternalUndoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77F6B328D4C46900ED6266 /* UndoableStringWithExternalUndoManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,15 +47,29 @@
 /* Begin PBXFileReference section */
 		FF4C30ED28D331D6002D92BA /* swiftuiUndoableTextEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftuiUndoableTextEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4C30F028D331D6002D92BA /* swiftuiUndoableTextEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftuiUndoableTextEditorApp.swift; sourceTree = "<group>"; };
-		FF4C30F228D331D6002D92BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FF4C30F428D331D8002D92BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF4C30F628D331D8002D92BA /* swiftuiUndoableTextEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = swiftuiUndoableTextEditor.entitlements; sourceTree = "<group>"; };
 		FF4C30F828D331D8002D92BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		FF4C30FE28D331D8002D92BA /* swiftuiUndoableTextEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftuiUndoableTextEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF4C310228D331D8002D92BA /* swiftuiUndoableTextEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftuiUndoableTextEditorTests.swift; sourceTree = "<group>"; };
-		FF4C310828D331D8002D92BA /* swiftuiUndoableTextEditorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftuiUndoableTextEditorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF4C310C28D331D8002D92BA /* swiftuiUndoableTextEditorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftuiUndoableTextEditorUITests.swift; sourceTree = "<group>"; };
-		FF4C310E28D331D8002D92BA /* swiftuiUndoableTextEditorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftuiUndoableTextEditorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FF4C30FE28D331D8002D92BA /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF4C310828D331D8002D92BA /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF54048128D8A0A900250B55 /* UndoableString_ExternalUndoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoableString_ExternalUndoManager.swift; sourceTree = "<group>"; };
+		FF77F69128D4AE3D00ED6266 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		FF77F69228D4AE3D00ED6266 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		FF77F69328D4AE3D00ED6266 /* UndoableString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoableString.swift; sourceTree = "<group>"; };
+		FF77F69428D4AE3D00ED6266 /* FocusedValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedValues.swift; sourceTree = "<group>"; };
+		FF77F69628D4AE6D00ED6266 /* Main_SideBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main_SideBar.swift; sourceTree = "<group>"; };
+		FF77F69728D4AE6D00ED6266 /* Main_Detail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main_Detail.swift; sourceTree = "<group>"; };
+		FF77F69C28D4AE6D00ED6266 /* Main_DetailItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main_DetailItem.swift; sourceTree = "<group>"; };
+		FF77F69D28D4AE6D00ED6266 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		FF77F69E28D4AE6D00ED6266 /* Main_DetailItemNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main_DetailItemNote.swift; sourceTree = "<group>"; };
+		FF77F6AB28D4C27300ED6266 /* UndoableTextEditorUITests_SingleWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UndoableTextEditorUITests_SingleWindow.swift; sourceTree = "<group>"; };
+		FF77F6AD28D4C28900ED6266 /* UndoableTextEditorUITests_TwoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UndoableTextEditorUITests_TwoWindow.swift; sourceTree = "<group>"; };
+		FF77F6AF28D4C29200ED6266 /* XCUIApplication_App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCUIApplication_App.swift; sourceTree = "<group>"; };
+		FF77F6B128D4C3AD00ED6266 /* UndoableStringUnitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UndoableStringUnitTests.swift; sourceTree = "<group>"; };
+		FF77F6B328D4C46900ED6266 /* UndoableStringWithExternalUndoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoableStringWithExternalUndoManager.swift; sourceTree = "<group>"; };
+		FF77F6B528D4D1D700ED6266 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FF77F6B628D4DB8E00ED6266 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		FF77F6B728D4E2AA00ED6266 /* Screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,9 +100,12 @@
 		FF4C30E428D331D6002D92BA = {
 			isa = PBXGroup;
 			children = (
+				FF77F6B528D4D1D700ED6266 /* README.md */,
+				FF77F6B628D4DB8E00ED6266 /* LICENSE */,
+				FF77F6B728D4E2AA00ED6266 /* Screenshot.png */,
 				FF4C30EF28D331D6002D92BA /* swiftuiUndoableTextEditor */,
-				FF4C310128D331D8002D92BA /* swiftuiUndoableTextEditorTests */,
-				FF4C310B28D331D8002D92BA /* swiftuiUndoableTextEditorUITests */,
+				FF4C310128D331D8002D92BA /* UnitTests */,
+				FF4C310B28D331D8002D92BA /* UITests */,
 				FF4C30EE28D331D6002D92BA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,8 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				FF4C30ED28D331D6002D92BA /* swiftuiUndoableTextEditor.app */,
-				FF4C30FE28D331D8002D92BA /* swiftuiUndoableTextEditorTests.xctest */,
-				FF4C310828D331D8002D92BA /* swiftuiUndoableTextEditorUITests.xctest */,
+				FF4C30FE28D331D8002D92BA /* UnitTests.xctest */,
+				FF4C310828D331D8002D92BA /* UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,7 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				FF4C30F028D331D6002D92BA /* swiftuiUndoableTextEditorApp.swift */,
-				FF4C30F228D331D6002D92BA /* ContentView.swift */,
+				FF77F69528D4AE6D00ED6266 /* Views */,
+				FF77F69028D4AE3D00ED6266 /* Models */,
 				FF4C30F428D331D8002D92BA /* Assets.xcassets */,
 				FF4C30F628D331D8002D92BA /* swiftuiUndoableTextEditor.entitlements */,
 				FF4C30F728D331D8002D92BA /* Preview Content */,
@@ -112,21 +141,47 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		FF4C310128D331D8002D92BA /* swiftuiUndoableTextEditorTests */ = {
+		FF4C310128D331D8002D92BA /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				FF4C310228D331D8002D92BA /* swiftuiUndoableTextEditorTests.swift */,
+				FF77F6B128D4C3AD00ED6266 /* UndoableStringUnitTests.swift */,
+				FF77F6B328D4C46900ED6266 /* UndoableStringWithExternalUndoManager.swift */,
 			);
-			path = swiftuiUndoableTextEditorTests;
+			path = UnitTests;
 			sourceTree = "<group>";
 		};
-		FF4C310B28D331D8002D92BA /* swiftuiUndoableTextEditorUITests */ = {
+		FF4C310B28D331D8002D92BA /* UITests */ = {
 			isa = PBXGroup;
 			children = (
-				FF4C310C28D331D8002D92BA /* swiftuiUndoableTextEditorUITests.swift */,
-				FF4C310E28D331D8002D92BA /* swiftuiUndoableTextEditorUITestsLaunchTests.swift */,
+				FF77F6AB28D4C27300ED6266 /* UndoableTextEditorUITests_SingleWindow.swift */,
+				FF77F6AD28D4C28900ED6266 /* UndoableTextEditorUITests_TwoWindow.swift */,
+				FF77F6AF28D4C29200ED6266 /* XCUIApplication_App.swift */,
 			);
-			path = swiftuiUndoableTextEditorUITests;
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		FF77F69028D4AE3D00ED6266 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FF77F69228D4AE3D00ED6266 /* AppModel.swift */,
+				FF77F69128D4AE3D00ED6266 /* Item.swift */,
+				FF77F69328D4AE3D00ED6266 /* UndoableString.swift */,
+				FF54048128D8A0A900250B55 /* UndoableString_ExternalUndoManager.swift */,
+				FF77F69428D4AE3D00ED6266 /* FocusedValues.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FF77F69528D4AE6D00ED6266 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF77F69D28D4AE6D00ED6266 /* Main.swift */,
+				FF77F69628D4AE6D00ED6266 /* Main_SideBar.swift */,
+				FF77F69728D4AE6D00ED6266 /* Main_Detail.swift */,
+				FF77F69C28D4AE6D00ED6266 /* Main_DetailItem.swift */,
+				FF77F69E28D4AE6D00ED6266 /* Main_DetailItemNote.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,9 +204,9 @@
 			productReference = FF4C30ED28D331D6002D92BA /* swiftuiUndoableTextEditor.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FF4C30FD28D331D8002D92BA /* swiftuiUndoableTextEditorTests */ = {
+		FF4C30FD28D331D8002D92BA /* UnitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF4C311528D331D8002D92BA /* Build configuration list for PBXNativeTarget "swiftuiUndoableTextEditorTests" */;
+			buildConfigurationList = FF4C311528D331D8002D92BA /* Build configuration list for PBXNativeTarget "UnitTests" */;
 			buildPhases = (
 				FF4C30FA28D331D8002D92BA /* Sources */,
 				FF4C30FB28D331D8002D92BA /* Frameworks */,
@@ -162,14 +217,14 @@
 			dependencies = (
 				FF4C310028D331D8002D92BA /* PBXTargetDependency */,
 			);
-			name = swiftuiUndoableTextEditorTests;
+			name = UnitTests;
 			productName = swiftuiUndoableTextEditorTests;
-			productReference = FF4C30FE28D331D8002D92BA /* swiftuiUndoableTextEditorTests.xctest */;
+			productReference = FF4C30FE28D331D8002D92BA /* UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		FF4C310728D331D8002D92BA /* swiftuiUndoableTextEditorUITests */ = {
+		FF4C310728D331D8002D92BA /* UITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF4C311828D331D8002D92BA /* Build configuration list for PBXNativeTarget "swiftuiUndoableTextEditorUITests" */;
+			buildConfigurationList = FF4C311828D331D8002D92BA /* Build configuration list for PBXNativeTarget "UITests" */;
 			buildPhases = (
 				FF4C310428D331D8002D92BA /* Sources */,
 				FF4C310528D331D8002D92BA /* Frameworks */,
@@ -180,9 +235,9 @@
 			dependencies = (
 				FF4C310A28D331D8002D92BA /* PBXTargetDependency */,
 			);
-			name = swiftuiUndoableTextEditorUITests;
+			name = UITests;
 			productName = swiftuiUndoableTextEditorUITests;
-			productReference = FF4C310828D331D8002D92BA /* swiftuiUndoableTextEditorUITests.xctest */;
+			productReference = FF4C310828D331D8002D92BA /* UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -222,8 +277,8 @@
 			projectRoot = "";
 			targets = (
 				FF4C30EC28D331D6002D92BA /* swiftuiUndoableTextEditor */,
-				FF4C30FD28D331D8002D92BA /* swiftuiUndoableTextEditorTests */,
-				FF4C310728D331D8002D92BA /* swiftuiUndoableTextEditorUITests */,
+				FF4C30FD28D331D8002D92BA /* UnitTests */,
+				FF4C310728D331D8002D92BA /* UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -259,8 +314,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF4C30F328D331D6002D92BA /* ContentView.swift in Sources */,
+				FF77F6A728D4AEC600ED6266 /* Item.swift in Sources */,
+				FF54048228D8A0A900250B55 /* UndoableString_ExternalUndoManager.swift in Sources */,
+				FF77F6A828D4AECD00ED6266 /* AppModel.swift in Sources */,
+				FF77F6AA28D4AECD00ED6266 /* FocusedValues.swift in Sources */,
+				FF77F6A428D4AE6D00ED6266 /* Main_DetailItem.swift in Sources */,
+				FF77F6A528D4AE6D00ED6266 /* Main.swift in Sources */,
+				FF77F6A628D4AE6D00ED6266 /* Main_DetailItemNote.swift in Sources */,
+				FF77F6A028D4AE6D00ED6266 /* Main_Detail.swift in Sources */,
 				FF4C30F128D331D6002D92BA /* swiftuiUndoableTextEditorApp.swift in Sources */,
+				FF77F6A928D4AECD00ED6266 /* UndoableString.swift in Sources */,
+				FF77F69F28D4AE6D00ED6266 /* Main_SideBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +332,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF4C310328D331D8002D92BA /* swiftuiUndoableTextEditorTests.swift in Sources */,
+				FF77F6B428D4C46900ED6266 /* UndoableStringWithExternalUndoManager.swift in Sources */,
+				FF77F6B228D4C3AD00ED6266 /* UndoableStringUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +341,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF4C310F28D331D8002D92BA /* swiftuiUndoableTextEditorUITestsLaunchTests.swift in Sources */,
-				FF4C310D28D331D8002D92BA /* swiftuiUndoableTextEditorUITests.swift in Sources */,
+				FF77F6AE28D4C28A00ED6266 /* UndoableTextEditorUITests_TwoWindow.swift in Sources */,
+				FF77F6B028D4C29200ED6266 /* XCUIApplication_App.swift in Sources */,
+				FF77F6AC28D4C27400ED6266 /* UndoableTextEditorUITests_SingleWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,9 +504,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -476,9 +544,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -498,9 +568,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swiftuiUndoableTextEditor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/swiftuiUndoableTextEditor";
 			};
 			name = Debug;
@@ -521,9 +593,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swiftuiUndoableTextEditor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/swiftuiUndoableTextEditor";
 			};
 			name = Release;
@@ -543,9 +617,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				TEST_TARGET_NAME = swiftuiUndoableTextEditor;
 			};
 			name = Debug;
@@ -565,9 +641,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				TEST_TARGET_NAME = swiftuiUndoableTextEditor;
 			};
 			name = Release;
@@ -593,7 +671,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF4C311528D331D8002D92BA /* Build configuration list for PBXNativeTarget "swiftuiUndoableTextEditorTests" */ = {
+		FF4C311528D331D8002D92BA /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF4C311628D331D8002D92BA /* Debug */,
@@ -602,7 +680,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF4C311828D331D8002D92BA /* Build configuration list for PBXNativeTarget "swiftuiUndoableTextEditorUITests" */ = {
+		FF4C311828D331D8002D92BA /* Build configuration list for PBXNativeTarget "UITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF4C311928D331D8002D92BA /* Debug */,

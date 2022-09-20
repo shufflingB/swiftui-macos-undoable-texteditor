@@ -67,8 +67,10 @@ More on the expected behaviour can be understood from the App's Unit and UI test
 and Catalyst 13.0+ specific).
 
 2. Undoable checkpointing currently only occurs when the user moves their focus either:
-	3. Away from the Window, or
-	4. To a different view in the same window. 
+	
+	1. Away from the Window, or
+	
+	2. To a different view in the same window. 
 
 	This makes undo a rather coarse affair (the expectation being that in a production implementation a timer, or watchdog timer, would be used to trigger more regular checkpointing (I may add this shortly)).
 

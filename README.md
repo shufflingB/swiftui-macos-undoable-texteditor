@@ -47,7 +47,7 @@ Finally, an extension to the `UndoableString` class extends the functionallity t
 
 ## Running & Testing
 
-1. The demo app has been built and tested on macOS Ventura (13.0 Beta) using Xcode 14.0 Beta 6.  
+1. The demo app has been built and tested on macOS Ventura (13.0 Beta) using Xcode 14.0.  
 
 2. It should work on versions of macOS earlier than that but it has not been tested on those.
 

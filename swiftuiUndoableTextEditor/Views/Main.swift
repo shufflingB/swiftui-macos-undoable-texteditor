@@ -14,7 +14,7 @@ struct Main: View {
     @Environment(\.controlActiveState) var ctrlState: ControlActiveState
 
     @State private var selection: UUID?
-    
+
     @StateObject var otherRandomItem = Item(
         text: "Not in the sidebar list random other item's note",
         title: "Other item"
@@ -23,14 +23,14 @@ struct Main: View {
     @FocusedValue(\.undoableStringKey) private var focusedUString: UndoableString?
 
     var body: some View {
-        NavigationSplitView {
+        NavigationView {
             SideBar(selection: $selection)
                 .padding(.vertical)
 
-        } detail: {
             Detail(displayId: selection, otherItem: otherRandomItem)
                 .padding()
         }
+        .frame(minWidth: 600)
         .onChange(of: ctrlState) { newCtrlState in
             print("oncChange, changed to = \(newCtrlState)")
             if newCtrlState == .inactive {

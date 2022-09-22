@@ -17,7 +17,6 @@ class UndoableStringUnitTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-
     func test_detectChanges() throws {
         let t = UndoableString(text: "Lorem")
         XCTAssertFalse(t.hasUnCheckpointedChanges)
@@ -30,7 +29,7 @@ class UndoableStringUnitTests: XCTestCase {
         XCTAssertFalse(t.hasUnCheckpointedChanges)
         t.text = "Changed"
         XCTAssertTrue(t.hasUnCheckpointedChanges)
-        XCTAssertFalse(t.undoManager.canUndo)
+        XCTAssertFalse(t.passThroughTgtUm.canUndo)
     }
 
     func test_undoes() throws {
@@ -40,11 +39,11 @@ class UndoableStringUnitTests: XCTestCase {
         t.text = "Changed"
 
         t.makeTextUndoableToNewCheckpoint(withActionName: "Typing")
-        XCTAssertTrue(t.undoManager.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
 
-        t.undoManager.undo()
+        t.passThroughTgtUm.undo()
         XCTAssertEqual(t.text, textInitial)
-        XCTAssertFalse(t.undoManager.canUndo)
+        XCTAssertFalse(t.passThroughTgtUm.canUndo)
     }
 
     func test_resetToBaselineAndReplay() throws {
@@ -53,26 +52,26 @@ class UndoableStringUnitTests: XCTestCase {
 
         t.text = "Change1"
         t.makeTextUndoableToNewCheckpoint(withActionName: "Action name 1")
-        XCTAssertTrue(t.undoManager.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
 
         t.text = "Change2"
         t.makeTextUndoableToNewCheckpoint(withActionName: "Action name 2")
-        XCTAssertTrue(t.undoManager.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
 
         let textFinal = "Change3"
         t.text = textFinal
         t.makeTextUndoableToNewCheckpoint(withActionName: "Action name 3")
-        XCTAssertTrue(t.undoManager.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
 
-        t.textRewindAllUndo()
+        t.textRewindUndo()
         XCTAssertEqual(t.text, textInitial)
-        XCTAssertFalse(t.undoManager.canUndo)
-        XCTAssertTrue(t.undoManager.canRedo)
+        XCTAssertFalse(t.passThroughTgtUm.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canRedo)
 
         var lastCheck: String = ""
         var count = 0
         let extpectedCount = 3
-        t.textReplayAllRedo(perform: { redoneStr in
+        t.textReplayRedo(perform: { redoneStr in
             lastCheck = redoneStr
             count += 1
 
@@ -80,8 +79,8 @@ class UndoableStringUnitTests: XCTestCase {
         XCTAssertEqual(t.text, textFinal)
         XCTAssertEqual(lastCheck, textFinal)
         XCTAssertEqual(count, extpectedCount)
-        XCTAssertTrue(t.undoManager.canUndo)
-        XCTAssertFalse(t.undoManager.canRedo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertFalse(t.passThroughTgtUm.canRedo)
     }
 
     func test_redoes() throws {
@@ -94,32 +93,32 @@ class UndoableStringUnitTests: XCTestCase {
         t.makeTextUndoableToNewCheckpoint(withActionName: "Typing")
 
         // 1st Undo
-        t.undoManager.undo()
+        t.passThroughTgtUm.undo()
         XCTAssertEqual(t.text, textInitial,
                        "1st Undo the text should be its init value = \(textInitial)")
-        XCTAssertFalse(t.undoManager.canUndo)
-        XCTAssertTrue(t.undoManager.canRedo)
+        XCTAssertFalse(t.passThroughTgtUm.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canRedo)
 
         // 1st Redo
-        t.undoManager.redo()
+        t.passThroughTgtUm.redo()
         XCTAssertEqual(t.text, textChanged,
                        "1st Redo the 1st Undo should be undone and the text its changed value  = \(textChanged)")
-        XCTAssertTrue(t.undoManager.canUndo)
-        XCTAssertFalse(t.undoManager.canRedo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertFalse(t.passThroughTgtUm.canRedo)
 
         // 2nd Undo
-        t.undoManager.undo()
+        t.passThroughTgtUm.undo()
         XCTAssertEqual(t.text, textInitial,
                        "2nd Undo the text should be back to its init value again = \(textInitial)")
-        XCTAssertFalse(t.undoManager.canUndo)
-        XCTAssertTrue(t.undoManager.canRedo)
+        XCTAssertFalse(t.passThroughTgtUm.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canRedo)
 
         // 2nd Redo
-        t.undoManager.redo()
+        t.passThroughTgtUm.redo()
         XCTAssertEqual(t.text, textChanged,
                        "2nd Redo the and the should be its changed value again  = \(textChanged)")
-        XCTAssertTrue(t.undoManager.canUndo)
-        XCTAssertFalse(t.undoManager.canRedo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertFalse(t.passThroughTgtUm.canRedo)
     }
 
     func test_undoesMultipleStacked() throws {
@@ -140,28 +139,29 @@ class UndoableStringUnitTests: XCTestCase {
 
         // Now verify can unwind changes with a bit of jiggle in the middle
         // Change 3 to 2
-        XCTAssertTrue(t.undoManager.canUndo)
-        t.undoManager.undo()
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        t.passThroughTgtUm.undo()
         XCTAssertEqual(t.text, textChange2)
 
         // Jiggle - Change 2 to Change 3 and then back to Change 2
-        t.undoManager.redo()
+        t.passThroughTgtUm.redo()
         XCTAssertEqual(t.text, textChange3)
-        XCTAssertTrue(t.undoManager.canUndo)
-        t.undoManager.undo()
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        t.passThroughTgtUm.undo()
         XCTAssertEqual(t.text, textChange2)
-        XCTAssertTrue(t.undoManager.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
 
         // Change 2 to 1
-        XCTAssertTrue(t.undoManager.canUndo)
-        t.undoManager.undo()
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        t.passThroughTgtUm.undo()
         XCTAssertEqual(t.text, textChange1)
 
         // Change 1 to initial state
-        XCTAssertTrue(t.undoManager.canUndo)
-        t.undoManager.undo()
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        t.passThroughTgtUm.undo()
         XCTAssertEqual(t.text, textInitial)
-        XCTAssertFalse(t.undoManager.canUndo)
+        XCTAssertFalse(t.passThroughTgtUm.canUndo)
     }
+
 
 }

@@ -40,13 +40,12 @@ final class UndoableTextEditorUITests_SingleWindow: XCTestCase {
                        "Given there are no outstanding undo operations for this item at the start of the test")
 
         let noteInitial = app.detail1_forSidebarItem.value as? String
-        
+
         app.typeText("1")
 
         XCTAssertNotEqual(app.detail1_forSidebarItem.value as? String, noteInitial,
                           "Then when the note field is changed")
 
-        
         XCTAssertTrue(app.menuUndoShowsUndoable,
                       "The Edit menu should update to show an option to Undo the change")
 
@@ -372,7 +371,7 @@ final class UndoableTextEditorUITests_SingleWindow: XCTestCase {
         XCTAssertFalse(app.menuRedoShowsRedoable,
                        "And further Redo's are not")
 
-        // 2nd Undo - Undoing the fits Redo
+        // 2nd Undo - Undoing the first Redo
         app.menuUndo.click()
         XCTAssertEqual(app.detail1_forSidebarItem.value as? String, noteInitial,
                        "And if the Undo is triggered a 2nd time the note is reverted to showing its original content again")
@@ -468,5 +467,48 @@ final class UndoableTextEditorUITests_SingleWindow: XCTestCase {
         XCTAssertTrue(app.menuUndoShowsUndoable)
         app.menuUndo.click()
         XCTAssertEqual(app.detail1_forSidebarItem.value as? String, note2Initial)
+    }
+
+    func test1000_timerbasedUndoCheckPointing() {
+        let timeBetweenChanges: Double = 3 // holdOff time is currently set as 2 s when the Item is created. So add + 1 to ensure triggers
+
+        app.sideBarRow0.click()
+        app.detail1_forSidebarItem.click()
+        let noteInitial = app.detail1_forSidebarItem.value as? String
+
+        // Make change one
+        app.typeText("1")
+        let noteChange1 = app.detail1_forSidebarItem.value as? String
+        sleep(UInt32(timeBetweenChanges))
+
+        // Make change two
+        app.typeText("2")
+        let noteChange2 = app.detail1_forSidebarItem.value as? String
+        sleep(UInt32(timeBetweenChanges))
+
+        // Make change three
+        app.typeText("3")
+        let noteChange3 = app.detail1_forSidebarItem.value as? String
+        /// sleep(UInt32(timeBetweenChanges)) <- intentional to make sure capture changes where time does not expire
+
+        // Move focus elsewhere and back
+        app.sideBarRow1.click()
+        app.sideBarRow0.click()
+        app.detail1_forSidebarItem.click()
+
+        // Check initial conditions are sane
+        XCTAssertNotEqual(noteChange3, noteInitial)
+
+        app.menuUndo.click()
+        XCTAssertEqual(app.detail1_forSidebarItem.value as? String, noteChange2,
+                       "Then the 1st undo will revert the text to its state after the 2nd change")
+
+        app.menuUndo.click()
+        XCTAssertEqual(app.detail1_forSidebarItem.value as? String, noteChange1,
+                       "And the 2nd undo will revert the text to its state after the 1st change")
+
+        app.menuUndo.click()
+        XCTAssertEqual(app.detail1_forSidebarItem.value as? String, noteInitial,
+                       "And the 3rd undo will revert the text to its original state")
     }
 }

@@ -27,8 +27,8 @@ final class UndoableStringWithExternalUndoManager: XCTestCase {
         t.text = textChange1
 
         UndoableString.saveBlockUndoInfo(to: t, extUndoMgr: nil)
-        XCTAssertTrue(t.undoManager.canUndo)
-        XCTAssertFalse(t.undoManager.canRedo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertFalse(t.passThroughTgtUm.canRedo)
 
         UndoableString.pushBlockUndoInfo(from: t, to: extUm)
 
@@ -40,16 +40,16 @@ final class UndoableStringWithExternalUndoManager: XCTestCase {
         extUm.undo()
         XCTAssertEqual(t.text, textInitial,
                        "And after triggering the external UM's undo method ")
-        XCTAssertFalse(t.undoManager.canUndo)
-        XCTAssertTrue(t.undoManager.canRedo)
+        XCTAssertFalse(t.passThroughTgtUm.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canRedo)
         XCTAssertFalse(extUm.canUndo)
         XCTAssertTrue(extUm.canRedo)
 
         extUm.redo()
         XCTAssertEqual(t.text, textChange1,
                        "And after triggering the external UM's redo method ")
-        XCTAssertTrue(t.undoManager.canUndo)
-        XCTAssertFalse(t.undoManager.canRedo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertFalse(t.passThroughTgtUm.canRedo)
         XCTAssertTrue(extUm.canUndo)
         XCTAssertFalse(extUm.canRedo)
     }
@@ -68,24 +68,24 @@ final class UndoableStringWithExternalUndoManager: XCTestCase {
         let textChange1 = "1st changed text"
         t.text = textChange1
         UndoableString.saveBlockUndoInfo(to: t, extUndoMgr: nil)
-        XCTAssertTrue(t.undoManager.canUndo)
-        XCTAssertFalse(t.undoManager.canRedo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertFalse(t.passThroughTgtUm.canRedo)
 
         // Make 2nd change and make undoable via the external UM
         print("\n####### Checkpoint 2 - from 1st => 2nd change")
         let textChange2 = "2nd changed text"
         t.text = textChange2
         UndoableString.saveBlockUndoInfo(to: t, extUndoMgr: nil)
-        XCTAssertTrue(t.undoManager.canUndo)
-        XCTAssertFalse(t.undoManager.canRedo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertFalse(t.passThroughTgtUm.canRedo)
 
         // Make 3rd change and make undoable via the external UM
         print("\n####### Checkpoint 3 - from 2nd => 3rd change")
         let textChange3 = "3rd changed text"
         t.text = textChange3
         UndoableString.saveBlockUndoInfo(to: t, extUndoMgr: nil)
-        XCTAssertTrue(t.undoManager.canUndo)
-        XCTAssertFalse(t.undoManager.canRedo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertFalse(t.passThroughTgtUm.canRedo)
 
         print("#")
         print("#   Push undoable's undo stack onto an external UndoManager ")
@@ -93,8 +93,8 @@ final class UndoableStringWithExternalUndoManager: XCTestCase {
         UndoableString.pushBlockUndoInfo(from: t, to: extUm)
 
         // Check the undoManagers are in agreeement
-        XCTAssertTrue(t.undoManager.canUndo)
-        XCTAssertFalse(t.undoManager.canRedo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertFalse(t.passThroughTgtUm.canRedo)
         XCTAssertTrue(extUm.canUndo,
                       "After the edit block undo information has been restored the  external UM indicates it can Undo")
         XCTAssertFalse(extUm.canRedo, "But cannot Redo")
@@ -108,8 +108,8 @@ final class UndoableStringWithExternalUndoManager: XCTestCase {
         extUm.undo()
         XCTAssertEqual(t.text, textChange2,
                        "And after triggering the external UM's undo method ")
-        XCTAssertTrue(t.undoManager.canUndo)
-        XCTAssertTrue(t.undoManager.canRedo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canRedo)
         XCTAssertTrue(extUm.canUndo)
         XCTAssertTrue(extUm.canRedo)
 
@@ -119,8 +119,8 @@ final class UndoableStringWithExternalUndoManager: XCTestCase {
         extUm.undo()
         XCTAssertEqual(t.text, textChange1,
                        "And after triggering the external UM's Undo method ")
-        XCTAssertTrue(t.undoManager.canUndo)
-        XCTAssertTrue(t.undoManager.canRedo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canRedo)
         XCTAssertTrue(extUm.canUndo)
         XCTAssertTrue(extUm.canRedo)
 
@@ -130,8 +130,8 @@ final class UndoableStringWithExternalUndoManager: XCTestCase {
             print("\n#######  Jiggle - Redo from change 1 => 2 ")
             extUm.redo()
             XCTAssertEqual(t.text, textChange2)
-            XCTAssertTrue(t.undoManager.canUndo)
-            XCTAssertTrue(t.undoManager.canRedo)
+            XCTAssertTrue(t.passThroughTgtUm.canUndo)
+            XCTAssertTrue(t.passThroughTgtUm.canRedo)
             XCTAssertTrue(extUm.canUndo)
             XCTAssertTrue(extUm.canRedo)
 
@@ -139,8 +139,8 @@ final class UndoableStringWithExternalUndoManager: XCTestCase {
             print("#######  Jiggle - Undo from change 2 => 1 ")
             extUm.undo()
             XCTAssertEqual(t.text, textChange1)
-            XCTAssertTrue(t.undoManager.canUndo)
-            XCTAssertTrue(t.undoManager.canRedo)
+            XCTAssertTrue(t.passThroughTgtUm.canUndo)
+            XCTAssertTrue(t.passThroughTgtUm.canRedo)
             XCTAssertTrue(extUm.canUndo)
             XCTAssertTrue(extUm.canRedo)
         }
@@ -151,8 +151,8 @@ final class UndoableStringWithExternalUndoManager: XCTestCase {
         extUm.undo()
         XCTAssertEqual(t.text, textInitial,
                        "And after triggering the external UM's undo method ")
-        XCTAssertFalse(t.undoManager.canUndo)
-        XCTAssertTrue(t.undoManager.canRedo)
+        XCTAssertFalse(t.passThroughTgtUm.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canRedo)
         XCTAssertFalse(extUm.canUndo)
         XCTAssertTrue(extUm.canRedo)
 
@@ -163,24 +163,24 @@ final class UndoableStringWithExternalUndoManager: XCTestCase {
         print("\n#######  Redo from change Initial => change 1 ")
         extUm.redo()
         XCTAssertEqual(t.text, textChange1)
-        XCTAssertTrue(t.undoManager.canUndo)
-        XCTAssertTrue(t.undoManager.canRedo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canRedo)
         XCTAssertTrue(extUm.canUndo)
         XCTAssertTrue(extUm.canRedo)
 
         print("\n#######  Redo from change change 1 => change 2 ")
         extUm.redo()
         XCTAssertEqual(t.text, textChange2)
-        XCTAssertTrue(t.undoManager.canUndo)
-        XCTAssertTrue(t.undoManager.canRedo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canRedo)
         XCTAssertTrue(extUm.canUndo)
         XCTAssertTrue(extUm.canRedo)
 
         print("\n#######  Redo from change change 2 => change 3 ")
         extUm.redo()
         XCTAssertEqual(t.text, textChange3)
-        XCTAssertTrue(t.undoManager.canUndo)
-        XCTAssertFalse(t.undoManager.canRedo)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertFalse(t.passThroughTgtUm.canRedo)
         XCTAssertTrue(extUm.canUndo)
         XCTAssertFalse(extUm.canRedo)
     }
@@ -191,5 +191,137 @@ final class UndoableStringWithExternalUndoManager: XCTestCase {
 
     func test_multipleUndoableOperationsIntegrationWithExternalUndoManager_WithJiggle() throws {
         try __test_multipleUndoableOperationsIntegrationWithExternalUndoManager(jiggle: true)
+    }
+
+    func test_timerTriggerCheckpointingDoesNotHappenBelowHoldOffPeriod() throws {
+        let extUm = UndoManager()
+
+        let holdOffTimeBeforeCheckpointing: Double = 2
+        let timeBetweenChanges: Double = holdOffTimeBeforeCheckpointing - 1
+
+        let textInitial = "Original text"
+        let t = UndoableString(text: textInitial, checkpointAfter: holdOffTimeBeforeCheckpointing, withActionName: "Timer checkpointed changes")
+
+        // Make change 1
+        nonBlockingSleep(forAtLeast: timeBetweenChanges)
+        t.text = textInitial + " and"
+
+        // Make change 2
+        nonBlockingSleep(forAtLeast: timeBetweenChanges)
+        t.text = t.text + " some"
+
+        // Make change 3
+        nonBlockingSleep(forAtLeast: timeBetweenChanges)
+        t.text = t.text + " other stuff"
+
+        // Force a manual checkpoint to simulate a moving focus somewhere else
+        nonBlockingSleep(forAtLeast: timeBetweenChanges)
+        t.makeTextUndoableToNewCheckpoint(withActionName: "Typing changes")
+
+        /// Simulate shifting focus elsewhere
+        UndoableString.saveBlockUndoInfo(to: t, extUndoMgr: nil)
+
+        XCTAssertNotEqual(t.text, textInitial)
+
+        // Verify that because none of the time gaps between the changes exceeded the holdOff time all the changes
+        // undo in a single go
+
+        t.passThroughTgtUm.undo()
+        XCTAssertEqual(t.text, textInitial)
+
+        XCTAssertFalse(t.passThroughTgtUm.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canRedo)
+    }
+
+    func nonBlockingSleep(forAtLeast seconds: Double) {
+        /// Using sleep doesn't work as it blocks the thread that the Timer runs on.
+        /// https://stackoverflow.com/questions/59321364/swift-unit-testing-a-method-that-includes-timer
+        ///
+        let expectation = self.expectation(description: #function)
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: seconds + 1)
+    }
+
+    func test_timerTriggerCheckpointingHappensWhenTheHoldOffTimeBetweenChangesIsExceeded() throws {
+        let holdOffTimeBeforeCheckpointing: Double = 1
+        let timeBetweenChanges: Double = holdOffTimeBeforeCheckpointing + 1 // NB: "+ 1"
+
+        let textInitial = "zero"
+        let t = UndoableString(text: textInitial, checkpointAfter: holdOffTimeBeforeCheckpointing, withActionName: "Timer checkpointed changes")
+
+        // Make change 1
+        print("Making change 1")
+        let textChange1 = t.text + " one"
+        t.text = textChange1
+        nonBlockingSleep(forAtLeast: timeBetweenChanges)
+
+        print("Making change 2")
+        let textChange2 = t.text + " two"
+        t.text = textChange2
+        nonBlockingSleep(forAtLeast: timeBetweenChanges)
+
+        print("Making change 3")
+        let textChange3 = t.text + " three"
+        t.text = textChange3
+        nonBlockingSleep(forAtLeast: timeBetweenChanges)
+
+        // Change 4 but without enough time for the timer to fire => check we catch anything else left over
+        print("Making change 4 but not leaving time for timer to expire")
+        let textChange4 = t.text + " & four"
+        t.text = textChange4
+
+        // Simulate a moving focus somewhere else
+        print("Simulating moving focus away")
+        UndoableString.saveBlockUndoInfo(to: t, extUndoMgr: nil)
+
+        XCTAssertNotEqual(t.text, textInitial)
+
+        // Verify that because all of the time gaps between changes exceeded the holdOff time each of them has been checkpointed
+        // by the UndoableString's timer checkpointing mechanism.
+
+        print("About to undo change 4")
+        t.passThroughTgtUm.undo()
+        XCTAssertEqual(t.text, textChange3)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canRedo)
+
+        // See if we can upset things with a redo jiggle
+        print("Jiggling - redo change 4")
+        nonBlockingSleep(forAtLeast: timeBetweenChanges)
+        t.passThroughTgtUm.redo()
+        XCTAssertEqual(t.text, textChange4)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertFalse(t.passThroughTgtUm.canRedo)
+        nonBlockingSleep(forAtLeast: timeBetweenChanges)
+
+        print("Jiggling - undo change 4")
+        t.passThroughTgtUm.undo()
+        XCTAssertEqual(t.text, textChange3)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canRedo)
+        nonBlockingSleep(forAtLeast: timeBetweenChanges)
+
+        // Undo change 3
+        print("Undo change 3")
+        t.passThroughTgtUm.undo()
+        XCTAssertEqual(t.text, textChange2)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canRedo)
+
+        // Undo change 2
+        print("Undo change 2")
+        t.passThroughTgtUm.undo()
+        XCTAssertEqual(t.text, textChange1)
+        XCTAssertTrue(t.passThroughTgtUm.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canRedo)
+
+        // Undo change 1
+        print("Undo change 1")
+        t.passThroughTgtUm.undo()
+        XCTAssertEqual(t.text, textInitial)
+        XCTAssertFalse(t.passThroughTgtUm.canUndo)
+        XCTAssertTrue(t.passThroughTgtUm.canRedo)
     }
 }

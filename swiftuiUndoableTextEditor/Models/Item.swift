@@ -18,7 +18,7 @@ class Item: ObservableObject, Identifiable, Equatable {
 
 
     init(text: String, title: String) {
-        self.note = UndoableString(text: text)
+        self.note = UndoableString(text: text, checkpointAfter: 2, withActionName: "Block")
         self.title = title
     }
 }

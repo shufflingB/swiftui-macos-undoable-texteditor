@@ -15,40 +15,51 @@ It uses checkpointing and a pass-through mechanism from SwiftUI's built in undo 
 
 ## Why?
 
-As of 2022/09, SwiftUi's builtin in undo (and redo) for the main text editing component (`TextEditor`)  does not provide a ready API or documentation on how to achieve the level of editing undo sophistication most user's expect on macOS.  There's more on this on the Apple Developer forum [here](https://developer.apple.com/forums/thread/713185)
-
-This app explores one way some of those limitations might be worked around.
+1. Good undo management is something most existing app's on macOS provide.
+2. As of 2022/09, SwiftUi's builtin in undo (and redo) for the main text editing component (`TextEditor`)  do not provide a ready API or documentation on how to achieve.
 
 ## How
-At a high-level the approach taken here is one whereby there is an `UndoableString` object that has a `String` property that is bound in the standard way to a `TextEditor` view's `text` parameter.
 
-The user edits that `String` in a `TextEditor` making use of its nice, built-in `UndoManager` functionality as per normal.
+### High-level
+`UndoableString` object has a `String` property and a pass-through `UndoManager` for coupling into SwiftUI's per window `UndoManager`s
 
-When the user shifts their focus away from the `TextEditor` view, then at that instance, an undoable checkpoint of the `String` is triggered and captured by the `UndoableString`'s `UndoManager`. 
+The `String` property is bound in the standard way to any `TextEditor` view's `text` parameter that is to interact with it. 
 
-Subsequently, the `UndoableString`'s undo operations are loaded into SwiftUI's built-in per-window instance of `UndoManager` via a pass-through mechanism when other `TextEditor` views that interact with the `UndoableString` become active again.
+In operation, the user edits that bound `String` in the `TextEditor` making use of Apple's built-in `UndoManager` functionality as per normal.
 
-*More*
- 
-Changes in a `FocusedValue` and the window's `@Environment(\.controlActiveState)` are used to trigger:
+The `UndoableString` object then creates its own independent, background undoable snapshots of the user's text when they:
 
-1. Checkpointing of the `UndoableString` on the user moving their focus elsewhere.
-2. Creating/restoring a pass-through undo stack for SwiftUI's built-in per-window instance of `UndoManager` when they move their focus back.
- 
+1. Pause for a short while during editing, for example, as is reaching the end of a semantic block of text such as a word, sentence or paragraph.
+2. Shift their focus away from the `TextEditor` view.
+
+Both sets of snapshots are coalesced into `UndoableString`'s  pass-through `UndoManager` on focus shift events. 
+
+Subsequently,  when any other `TextEditor` view that interacts with the `UndoableString` becomes active. The `UndoableString`'s stored undo operations are loaded into SwiftUI's built-in per-window instance of `UndoManager` as pass-throughs operations that connect to the `UndoableStrings` pass-through `UndoManager`
+
+### More
+
 The `UndoableString` class:
-- Integrates its own instance of `UndoManager` and a `String` property. 
+- Integrates 
+	- A `String` property. 
+	- Two instances of `UndoManager`:
+		- One for capturing snapshots triggered by the editing activity watchdog timer
+		- One for storing coalesced changes and for linking via pass-through to external `UndoManager`, such a SwiftUI's per window instances.
 - Layers on top of these the functionality to enable:
-	1. Checkpointing of changes to the `String` property and their undoing via its `UndoManager`.
-	1. Rewinding and replaying all of its checkpoint'd changes.
+	1. Watchdog timer driven checkpointing of changes to the `String` when user activity pauses.
+	2. Checkpointing when a user's focus moves elsewhere.
+	1. Creating a pass-through coupling from external `UndoManager`s to it's pass-through `UndoManager` when the user's focus moves back.
 
-Finally, an extension to the `UndoableString` class extends the functionallity to enable interaction with external `UndoManagers` (such as SwiftUI's per window instance) that:
-1. As a convenience, saves changes and restores them when the user's focus in the UI changes.
-2. Loads the external `UndoManager`'s with pass-through actions to the `UndoableString`'s  `UndoManager` undo actions.
+External changes in SwiftUI View instances of a `FocusedValue` and the window's `@Environment(\.controlActiveState)` variable are then used to trigger:
+
+0. On the user moving their focus elsewhere away from the `TextEditor` that is interacting with the `UndoableString` instance to:
+	1. Copy the the watchdog timer's snapshots `UndoManager` state into its main pass-through `UndoManager`
+	1. Capture any remaining differences i.e. that that is not already captured by the timer mechanism, into main pass-through `UndoManager` as well.
+2. On the user moving their focus back to interacting with the same `UndoableString` instance, then it:
+	3. Builds an undo stack for SwiftUI's built-in per-window instance that passes-through to the `UndoableString`'s pass-through `UndoManager` instance.
 
 ## Running & Testing
 
 1. The demo app has been built and tested on macOS Ventura (13.0 Beta) using Xcode 14.0.  
-
 2. It should work on versions of macOS earlier than that but it has not been tested on those.
 
 To explore how it works run the app. 
@@ -67,9 +78,7 @@ More on the expected behaviour can be understood from the App's Unit and UI test
 and Catalyst 13.0+ specific).
 
 2. Undoable checkpointing currently only occurs when the user moves their focus either:
-	
 	1. Away from the Window, or
-	
 	2. To a different view in the same window. 
 
 	This makes undo a rather coarse affair (the expectation being that in a production implementation a timer, or watchdog timer, would be used to trigger more regular checkpointing (I may add this shortly)).
@@ -84,9 +93,3 @@ and Catalyst 13.0+ specific).
 Empirically, the inability to share a per `String` `UndoManager`  between `TextEditor`'s that are rendering it, is one of the main challenges to providing a macOS like undo experience (this is what necessitates the somewhat convoluted, checkpointing and the reloading of undo state between `UndoManagers` in different `TextEditor` views).  
 
 An alternative approach would be to abandon the use of `TextEditor` and instead wrap an `NSView` in a `NSViewRepresentable` and use a Coordinator object for it to supply an external `UndoManager` via the  `undoManager(for:)` delegate method.
-
-
-
-
-
-

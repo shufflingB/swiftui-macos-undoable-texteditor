@@ -13,25 +13,55 @@ class UndoableString: ObservableObject, Identifiable, Equatable {
 
     @Published var text: String {
         willSet {
-            // TODO: Add punching watchdog timer that when it expires triggers saving a checkpoint save
+            // Punch a watchdog timer that when it expires triggers saving a checkpoint save
             /// If don't have timer stashing checkpoints then if/when the checkpoint is saved by an external trigger that actual block that is
             /// undoable could be very large an not very user friendly i.e. they could have entered loads, and their only undo choice could end up being
             /// revert or keep the lot.
             // print("Text getting set to newValue \(newValue)")
+            guard let holdOffActionName = holdOffActionName, internalOriginChange == false else {
+                return
+            }
+            
+            if let holdOffTimer = holdOffTimer {
+                holdOffTimer.invalidate()
+            }
+            holdOffTimer = Timer.scheduledTimer(withTimeInterval: holdOff , repeats: false) { _ in
+                print("Timer based undoable checkpoint triggered")
+                
+                Self.makeTextUndoable(
+                    toLastCheckpoint: self.textLastCheckpointed,
+                    fromCurrent: self.text,
+                    withUString: self,
+                    usingUndoManager: self.timerTriggeredUm,
+                    settingActionName: holdOffActionName,
+                    opType: .undo,
+                    updateLastCheckPoint: false
+                )
+            }
         }
     }
 
     let id = UUID()
-    let undoManager = UndoManager()
-    private var textLastCheckpointed: String
+    let passThroughTgtUm = UndoManager()
+    internal var textLastCheckpointed: String
+    
+    private let holdOff: Double
+    internal let timerTriggeredUm = UndoManager()
+    internal var holdOffTimer: Timer?
+    private let holdOffActionName: String?
+    internal var internalOriginChange: Bool = false
+    
 
-    init(text: String) {
+    init(text: String, checkpointAfter: Double = 3, withActionName: String? = nil ) {
         _text = Published(initialValue: text)
         textLastCheckpointed = text
         /// Without the default groupsByEvent == true , end up with multiple undo's  getting undone the first time undo is used, i.e. it handles all of the registerUndo as if they were
         /// just a single one.
         /// https://stackoverflow.com/questions/47988403/how-will-undomanager-run-loop-grouping-be-affected-in-different-threading-contex
-        undoManager.groupsByEvent = false
+        passThroughTgtUm.groupsByEvent = false
+        timerTriggeredUm.groupsByEvent = false
+        self.holdOff = checkpointAfter
+        self.holdOffActionName = withActionName
     }
 
     var hasUnCheckpointedChanges: Bool {
@@ -43,20 +73,26 @@ class UndoableString: ObservableObject, Identifiable, Equatable {
     }
 
     func textUpdate(_ newValue: String) {
+        internalOriginChange = true
         text = newValue
+        internalOriginChange = false
     }
 
-    func textRewindAllUndo() {
-        while undoManager.canUndo {
-            undoManager.undo()
+    func textRewindUndo() {
+        internalOriginChange = true
+        while passThroughTgtUm.canUndo {
+            passThroughTgtUm.undo()
         }
+        internalOriginChange = false
     }
 
-    func textReplayAllRedo(perform: (_ redoneText: String) -> Void) {
-        while undoManager.canRedo {
-            undoManager.redo()
+    func textReplayRedo(perform: (_ redoneText: String) -> Void) {
+        internalOriginChange = true
+        while passThroughTgtUm.canRedo {
+            passThroughTgtUm.redo()
             perform(text)
         }
+        internalOriginChange = false
     }
 
     func makeTextUndoableToNewCheckpoint(withActionName: String) {
@@ -64,8 +100,10 @@ class UndoableString: ObservableObject, Identifiable, Equatable {
             toLastCheckpoint: textLastCheckpointed,
             fromCurrent: text,
             withUString: self,
-            settingUm: withActionName,
-            opType: .undo
+            usingUndoManager: self.passThroughTgtUm,
+            settingActionName: withActionName,
+            opType: .undo,
+            updateLastCheckPoint: true
         )
     }
 
@@ -78,8 +116,10 @@ class UndoableString: ObservableObject, Identifiable, Equatable {
         toLastCheckpoint textLastCheckpoint: String,
         fromCurrent text: String,
         withUString uString: UndoableString,
-        settingUm actionName: String,
-        opType: RevertType
+        usingUndoManager undoManager: UndoManager,
+        settingActionName actionName: String,
+        opType: RevertType,
+        updateLastCheckPoint: Bool
     ) {
         guard text != textLastCheckpoint else {
             print("makeTextUndoable: No changes to register how to undo to last checkpointed baseline value")
@@ -88,21 +128,25 @@ class UndoableString: ObservableObject, Identifiable, Equatable {
 
         /// Register the undo;
         print("makeTextUndoable: Registering \(opType) for current text '\(text)' to last checkpointed text '\(textLastCheckpoint)'")
-        uString.undoManager.beginUndoGrouping()
-        uString.undoManager.registerUndo(withTarget: uString) { tt in
+        undoManager.beginUndoGrouping()
+        undoManager.registerUndo(withTarget: uString) { tt in
             print("UndoableString#UndoManager: running \(opType) closure from makeTextUndoable. Will revert text from  '\(text)' to '\(textLastCheckpoint)'")
             tt.textUpdate(textLastCheckpoint)
             makeTextUndoable(
                 toLastCheckpoint: text, // <-- this and next swap position for Redo
                 fromCurrent: textLastCheckpoint,
                 withUString: tt,
-                settingUm: actionName,
-                opType: opType == .undo ? .redo : .undo
+                usingUndoManager: undoManager,
+                settingActionName: actionName,
+                opType: opType == .undo ? .redo : .undo,
+                updateLastCheckPoint: updateLastCheckPoint
             )
         }
-        uString.undoManager.setActionName(actionName)
-        uString.undoManager.endUndoGrouping()
-        uString.textLastCheckpointedUpdate(text)
+        undoManager.setActionName(actionName)
+        undoManager.endUndoGrouping()
+        
+        if updateLastCheckPoint {
+            uString.textLastCheckpointedUpdate(text)
+        }
     }
 }
-
